@@ -17,9 +17,9 @@ Operation-Dead-Air.hex (For MakeCode Import)
 
 Year: 2026
 
-Goal: TBD
+Goal: The objective of Project Overload was to use a micro:bit along with 2 solar panels and 2 servos to rotate and find the maximum possible voltage and what angle the servo must be set at to achive this voltage.
 
-Details: TBD
+Details: This Python code moves 2 servos on Pins 2 & 3 whenever button A is pressed. The code will then read the voltage produced by the solar panels on Pins 0 & 1 and find what angle had the best voltage. Finally, the code will then return the servo to the best possible angle. This code also includes 2 debugging print statements and resets the servos to 0 degrees when button B is pressed.
 
 Files: Project-Overload.py\
 Project-Overload.hex (For MakeCode Import)
