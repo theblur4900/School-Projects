@@ -1,1 +1,41 @@
-# TBD
+# This code is made for solar panels on Pins 0 and 1
+# Servos must be on Pins 2 and 3
+# Coded by Austin Dixon github.com/theblur4900
+
+light_list = []
+max_val = 0
+best_angle = 0
+
+pins.analog_set_period(AnalogPin.P2, 20000)
+pins.analog_set_period(AnalogPin.P3, 20000)
+
+def on_button_pressed_a():
+    global light_list, max_val, best_angle
+    light_list = []
+    max_val = 0
+    best_angle = 0
+    final_duty = 0
+    for i in range(181):
+    
+        pins.servo_write_pin(AnalogPin.P2, i)
+        pins.servo_write_pin(AnalogPin.P3, i)
+        
+        pause(40)
+        current_voltage = pins.analog_read_pin(AnalogPin.P0) + pins.analog_read_pin(AnalogPin.P1)
+        print("Current Voltage: " + current_voltage)
+        light_list.append(current_voltage)
+
+    for i in range(len(light_list)):
+        if light_list[i] > max_val:
+            max_val = light_list[i]
+            best_angle = i
+
+    pins.servo_write_pin(AnalogPin.P2, best_angle)
+    pins.servo_write_pin(AnalogPin.P3, best_angle)
+    print("Best Angle Found! " + best_angle + " Degrees")
+input.on_button_pressed(Button.A, on_button_pressed_a)
+
+def on_button_pressed_b():
+    pins.servo_write_pin(AnalogPin.P2, 0)
+    pins.servo_write_pin(AnalogPin.P3, 0)
+input.on_button_pressed(Button.B, on_button_pressed_b)
