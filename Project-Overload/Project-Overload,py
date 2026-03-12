@@ -14,7 +14,6 @@ def on_button_pressed_a():
     light_list = []
     max_val = 0
     best_angle = 0
-    final_duty = 0
     for i in range(181):
     
         pins.servo_write_pin(AnalogPin.P2, i)
