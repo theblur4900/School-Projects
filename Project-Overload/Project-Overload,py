@@ -20,7 +20,7 @@ def on_button_pressed_a():
         pins.servo_write_pin(AnalogPin.P3, i)
         
         pause(40)
-        current_voltage = pins.analog_read_pin(AnalogPin.P0) + pins.analog_read_pin(AnalogPin.P1)
+        current_voltage = (pins.analog_read_pin(AnalogPin.P0) + pins.analog_read_pin(AnalogPin.P1))/2
         print("Current Voltage: " + current_voltage)
         light_list.append(current_voltage)
 
